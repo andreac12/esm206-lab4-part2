@@ -7,5 +7,24 @@ output: html_document
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
+# Packages
+library(tidyverse)
+library(palmerpenguins)
+library(plotly)
+library(DT)
+```
+
+Scatterplot of penguin flipper_length_mm (x-axis) versus body_mass_g (y-axis), with points having different colors based on species
+```{r}
+penguins_graph <- ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
+  geom_point(aes(color = species))
+# if you store an object, it won't just show up...you have to call it (below)
+
+
+ggplotly(penguins_graph)
+```
+```{r}
+datatable(penguins)
 ```
 
